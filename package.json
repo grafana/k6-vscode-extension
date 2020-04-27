@@ -2,7 +2,7 @@
   "name": "k6",
   "displayName": "k6 for Visual Studio Code",
   "publisher": "k6",
-  "description": "",
+  "description": "Load testing integrated directly into your favorite IDE!",
   "license": "MIT",
   "homepage": "https://github.com/k6io/vscode-extension",
   "bugs": {
