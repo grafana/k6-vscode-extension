@@ -1,7 +1,17 @@
 {
   "name": "k6",
   "displayName": "k6",
+  "publisher": "k6",
   "description": "",
+  "license": "MIT",
+  "homepage": "https://github.com/k6io/vscode-extension",
+  "bugs": {
+    "url": "https://github.com/k6io/vscode-extension/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/k6io/vscode-extension"
+  },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.44.0"
@@ -42,6 +52,8 @@
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
+    "vscode:package": "vsce package",
+    "vscode:publish": "vsce publish",
     "compile": "tsc -p ./",
     "lint": "eslint src --ext ts",
     "format": "prettier ./src -c",
@@ -59,10 +71,10 @@
     "eslint-config-prettier": "^6.11.0",
     "glob": "^7.1.6",
     "prettier": "^2.0.5",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "vsce": "^1.75.0"
   },
   "dependencies": {
-    "@types/k6": "^0.25.1",
     "husky": "^4.2.5"
   },
   "husky": {
