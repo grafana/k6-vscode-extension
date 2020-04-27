@@ -1,0 +1,73 @@
+{
+  "name": "k6",
+  "displayName": "k6",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.44.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:k6.helloWorld",
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "k6",
+      "properties": {
+        "k6.cloudToken": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "If this field is left empty, k6 will look for an environment variable named `K6_CLOUD_TOKEN`. No account yet? Register for a free trial [here](https://k6.io/cloud)."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "k6.runWithK6",
+        "title": "k6: Run current file"
+      },
+      {
+        "command": "k6.runWithK6Cloud",
+        "title": "k6: Run current file in k6 cloud"
+      },
+      {
+        "command": "k6.openSettings",
+        "title": "k6: Open Settings"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint src --ext ts",
+    "format": "prettier ./src -c",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/node": "^13.11.0",
+    "@types/vscode": "^1.44.0",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "glob": "^7.1.6",
+    "prettier": "^2.0.5",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@types/k6": "^0.25.1",
+    "husky": "^4.2.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn format && yarn lint"
+    }
+  }
+}
