@@ -3,18 +3,18 @@
   "displayName": "k6 for Visual Studio Code",
   "publisher": "k6",
   "description": "Load testing integrated directly into your favorite IDE!",
-  "license": "MIT",
-  "homepage": "https://github.com/k6io/vscode-extension",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/grafana/k6-vscode-extension",
   "bugs": {
-    "url": "https://github.com/k6io/vscode-extension/issues"
+    "url": "https://github.com/grafana/k6-vscode-extension/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/k6io/vscode-extension"
+    "url": "https://github.com/grafana/k6-vscode-extension"
   },
-  "version": "0.5.1",
+  "version": "0.6.0",
   "engines": {
-    "vscode": "^1.0.0"
+    "vscode": "^1.76.0"
   },
   "icon": "icon.png",
   "categories": [
@@ -52,35 +52,30 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "yarn run compile",
+    "vscode:prepublish": "npm run compile",
     "vscode:package": "vsce package",
     "vscode:publish": "vsce publish",
     "compile": "tsc -p ./",
     "lint": "eslint src --ext ts",
     "format": "prettier ./src -c",
     "watch": "tsc -watch -p ./",
-    "pretest": "yarn run compile && yarn run lint",
+    "pretest": "npm run compile && npm run lint",
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/glob": "^7.1.1",
-    "@types/node": "^13.11.0",
-    "@types/vscode": "^1.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.26.0",
-    "@typescript-eslint/parser": "^2.26.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.11.0",
-    "glob": "^7.1.6",
-    "prettier": "^2.0.5",
-    "typescript": "^3.8.3",
-    "vsce": "^1.75.0"
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.76.0",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "glob": "^8.1.0",
+    "typescript": "^4.9.5"
   },
   "dependencies": {
-    "husky": "^4.2.5"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn format && yarn lint"
-    }
+    "@vscode/vsce": "^2.18.0",
+    "prettier": "^2.8.7",
+    "vsce": "^2.15.0"
   }
 }
