@@ -3,6 +3,7 @@
 import * as vscode from 'vscode';
 
 import runWithK6 from './commands/run';
+import uploadToK6Cloud from './commands/upload';
 import detect from './commands/detect';
 import openSettings from './commands/settings';
 
@@ -29,6 +30,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   addEditorCommand(context, 'k6.runWithK6', () => runWithK6(false));
   addEditorCommand(context, 'k6.runWithK6Cloud', () => runWithK6(true));
+  addEditorCommand(context, 'k6.uploadToK6Cloud', () => uploadToK6Cloud());
   addCommand(context, 'k6.openSettings', () => openSettings());
 }
 
