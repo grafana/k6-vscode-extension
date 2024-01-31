@@ -46,6 +46,10 @@
         "title": "k6: Run current file in k6 cloud"
       },
       {
+        "command": "k6.uploadToK6Cloud",
+        "title": "k6: Upload current file to k6 cloud"
+      },
+      {
         "command": "k6.openSettings",
         "title": "k6: Open Settings"
       }
