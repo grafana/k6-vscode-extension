@@ -1,0 +1,45 @@
+name: Publish Open VSX Extension
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - run: npm ci
+      - run: npm run compile
+      - run: npm run lint
+
+  publish_open_vsx:
+    needs: validate
+    runs-on: ubuntu-latest
+    # These permissions are needed to assume roles from GitHub's OIDC.
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - run: npm ci
+      - id: get-secrets
+        uses: grafana/shared-workflows/actions/get-vault-secrets@a37de51f3d713a30a9e4b21bcdfbd38170020593 # get-vault-secrets/v1.3.0
+        with:
+          # Secrets are stored in Vault under ci/repo/grafana/k6-vscode-extension/<path>.
+          repo_secrets: |
+            OPEN_VSX_TOKEN=openvsx:token
+      - name: Publish to Open VSX
+        uses: HaaLeo/publish-vscode-extension@ca5561daa085dee804bf9f37fe0165785a9b14db # v2.0.0
+        with:
+          pat: ${{ env.OPEN_VSX_TOKEN }}
+          registryUrl: https://open-vsx.org
