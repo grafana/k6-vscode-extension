@@ -13,7 +13,7 @@
     "url": "https://github.com/grafana/k6-vscode-extension"
   },
   "version": "0.6.0",
-  "packageManager": "npm@10.9.2",
+  "packageManager": "npm@10.9.8",
   "engines": {
     "vscode": "^1.76.0"
   },
